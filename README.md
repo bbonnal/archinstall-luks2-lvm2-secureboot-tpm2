@@ -696,6 +696,76 @@ With this, the guide has mostly covered on how to install Arch Linux, Encrypt di
 
 The only steps remaining are to install a Desktop Environment or a Window Manager, which this guide, unfortunately, will not cover.
 
+
+
+
+### 18. Installing necessary packages Lenovo T14s
+
+Make the boot less verbose
+
+quiet loglevel=3
+
+in root.conf and in linux.preset
+
+pacman -S xf86-video-amdgpu mesa vulkan-radeon
+
+sudo pacman -S --needed \
+  usbutils \
+  pciutils \
+  inetutils \
+  net-tools \
+  iproute2 \
+  wireless_tools \
+  iw \
+  dialog \
+  bash-completion
+
+sudo pacman -S --needed \
+  networkmanager \
+  wpa_supplicant \
+  bluez \
+  bluez-utils \
+  rfkill
+
+sudo pacman -S --needed \
+  pipewire \
+  pipewire-pulse \
+  wireplumber \
+  alsa-utils \
+  pavucontrol
+
+sudo pacman -S --needed \
+  mesa-utils \
+  vulkan-tools
+
+Firware updat tool
+
+sudo pacman -S udisks2
+  
+sudo pacman -S fwupd
+    sudo fwupdmgr refresh
+
+Signing the firmware updater to allow it to do stuff I guess
+
+    sudo sbctl sign -s /usr/lib/fwupd/efi/fwupdx64.efi -o /usr/lib/fwupd/efi/fwupdx64.efi.signed 
+
+Changing location of efi stuff and disabling the need for shim since we signed the firmware updater efi ourselves
+
+/etc/fwupd/fwupd.conf 
+- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+[fwupd]
+EspLocation=/efi
+[uefi_capsule]
+DisableShimForSecureBoot=true
+
+$ fwupdmgr update
+
+
+sudo pacman -S sway waybar wofi grim slurp wl-clipboard xdg-desktop-portal xdg desktop-portal-wlr seatd dbus polkit git firefox ghostty swaybg stow zsh tmux nvim fzf zoxide eza yazi
+
+
+
+
 ### Author
 
 This guide was written by [Joel Mathew Thomas](https://github.com/joelmathewthomas)
