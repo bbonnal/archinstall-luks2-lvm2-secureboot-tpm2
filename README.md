@@ -20,6 +20,14 @@ $ pacman-key -v archlinux-version-x86_64.iso.sig
 This guide assumes that your system supports UEFI amd you have a `Wired Ethernet` connection.
 If you want to use `Wi-Fi`, refer to the [Arch Wiki](https://wiki.archlinux.org/title/installation_guide#Connect_to_the_internet)
 
+### 0. Keyboards and font
+
+´´´
+loadkeys fr_CH-latin1
+
+setfont ter-132b
+´´´
+
 ### 1. Disk Preparation
 
 We'll use a 1024MB FAT32 system partition for our **EFI** partition , and for the root we'll use an **ext4** partition and a **SWAP** partition using **LVM2** logical volumes inside a LUKS encrypted partition.
