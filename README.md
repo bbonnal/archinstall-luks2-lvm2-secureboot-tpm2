@@ -22,11 +22,11 @@ If you want to use `Wi-Fi`, refer to the [Arch Wiki](https://wiki.archlinux.org/
 
 ### 0. Keyboards and font
 
-´´´
-loadkeys fr_CH-latin1
+```
+$ loadkeys fr_CH-latin1
 
-setfont ter-132b
-´´´
+$ setfont ter-132b
+```
 
 ### 1. Disk Preparation
 
